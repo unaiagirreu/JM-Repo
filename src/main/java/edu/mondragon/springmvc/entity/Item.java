@@ -23,6 +23,12 @@ public class Item {
 	@Column(name="category")
 	private String category;
 	
+	@Column(name="price")
+	private int price;
+	
+	@Column(name="img")
+	private String img;
+	
 	@OneToOne
 	@JoinColumn(name = "catalog")
 	private Catalog catalog;
@@ -73,6 +79,23 @@ public class Item {
 	public void setCatalog(Catalog catalog) {
 		this.catalog = catalog;
 	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
 	
 	
 }
