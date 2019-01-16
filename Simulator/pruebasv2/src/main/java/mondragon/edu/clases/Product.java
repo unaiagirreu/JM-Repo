@@ -40,11 +40,15 @@ public class Product {
 	
 	@OneToOne(targetEntity = Vehicle.class)
 //	@JoinColumn(name = "vehicleId")
-	private Integer vehicle;
+	private Vehicle vehicle;
 	
 	@ManyToOne(targetEntity = Order.class)
 //	@JoinColumn(name = "orderId")
-	private Integer order;
+	private Order order;
+	
+	@ManyToOne(targetEntity = Item.class)
+//	@JoinColumn(name = "orderId")
+	private Item item;
 	
 	@Column(name = "time")
 	private int time;
@@ -127,26 +131,25 @@ public class Product {
 		this.segmentDestination = segmentDestination;
 	}
 
-	public Integer getVehicle() {
+	public Vehicle getVehicle() {
 		return vehicle;
 	}
 
-	public void setVehicle(Integer vehicle) {
+	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
 
-	public Integer getOrder() {
+	public Order getOrder() {
 		return order;
 	}
 
-	public void setOrder(Integer order) {
+	public void setOrder(Order order) {
 		this.order = order;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
+	}	
 	/**
 	 * 
 	 * 

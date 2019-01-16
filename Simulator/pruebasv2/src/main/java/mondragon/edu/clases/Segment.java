@@ -1,5 +1,7 @@
 package mondragon.edu.clases;
 
+import java.util.concurrent.Semaphore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "Segment")
+@Table(name = "segment")
 public abstract class Segment implements Runnable{
 	
 	@Id
@@ -49,18 +52,12 @@ public abstract class Segment implements Runnable{
 	}
 
 	public abstract void run();
-	/*public boolean takePermission(Vehicle vehicle) throws InterruptedException {
-		if(sem.availablePermits()==0) return false;
-		else {
-			sem.acquire();
-			if(this.getClass().equals(Line.class))Thread.sleep(2000);
-			else if(this.getClass().equals(Workstation.class))Thread.sleep(3000);
-			else Thread.sleep(2000);
-		}
-		return true;
-	}*/
+	
+	public abstract boolean askForPriority();
+	
+	public abstract void letPriority();
 
-
+	public abstract int getLineId();
 	
 
 }

@@ -24,12 +24,14 @@ public class Order {
 	@Column(name = "date")
 	private String date;
 	
+	@Column(name = "status")
+	private String status;
+	
 /*	@OneToOne
 	@JoinColumn(name = "userId")
 	private Integer userId;*/
 	@Transient
 	List<Product> productList;
-	
 	
 	public Order() {}
 	
@@ -60,6 +62,14 @@ public class Order {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 /*	public Integer getUserId() {

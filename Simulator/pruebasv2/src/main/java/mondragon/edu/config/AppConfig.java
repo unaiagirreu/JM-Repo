@@ -17,6 +17,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import mondragon.edu.clases.Item;
 import mondragon.edu.clases.Line;
 import mondragon.edu.clases.Order;
 import mondragon.edu.clases.Parking;
@@ -35,6 +36,7 @@ import mondragon.edu.clases.Workstation;
       @ComponentScan("mondragon.edu.orders.dao"),
       @ComponentScan("mondragon.edu.segment.dao"),
       @ComponentScan("mondragon.edu.vehicles.dao"),
+      @ComponentScan("mondragon.edu.item.dao"),
       @ComponentScan("mondragon.edu.product.dao") 
     })
 public class AppConfig {
@@ -59,11 +61,11 @@ public class AppConfig {
       
       Properties props=new Properties();
       props.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
-      props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+   //   props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
       props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 
       factoryBean.setHibernateProperties(props);
-      factoryBean.setAnnotatedClasses(Segment.class, Workstation.class, Line.class, Parking.class, Vehicle.class, Order.class, Product.class);
+      factoryBean.setAnnotatedClasses(Segment.class, Workstation.class, Line.class, Parking.class, Vehicle.class, Order.class, Product.class, Item.class);
       return factoryBean;
    }
    

@@ -2,6 +2,7 @@ package mondragon.edu.clases;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,11 +28,16 @@ public class Workstation extends Segment{
 	@Transient
 	ControlVehicles controlVehicles;
 	
+	@Transient
+	Semaphore priority;
+
+	
 	public Workstation() {}
 
 	public Workstation(int id,String name, int correspondient, ControlVehicles control) {
 		super(id);
 		// TODO Auto-generated constructor stub
+		this.priority=new Semaphore(1);
 		this.correspondientLineId=correspondient;
 		this.name=name;
 		this.listaProductos=new ArrayList<Product>();
@@ -46,31 +52,45 @@ public class Workstation extends Segment{
 	}
 
 	public boolean makeProduct() {
-		if(this.listaProductos.size()!=0) {
-			try {
-				Thread.sleep(this.listaProductos.get(0).getTime()*1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println(this.listaProductos.get(0).getName()+ " its ready!");
+
+		try {
+			Thread.sleep(this.listaProductos.get(0).getTime()*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		System.out.println(this.listaProductos.get(0).getName()+ " its ready!");
+		
 		return true;
 
 	}
 	
 	public void produce() {
+		if(listaProductos.size()==0) {
+			try {
+				synchronized(this) {
+				System.out.println(this.name+" waiting");
+				wait();
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		makeProduct();	
-		controlVehicles.callVehicle(listaProductos.get(0));
+		try {
+			controlVehicles.callVehicle(listaProductos.get(0));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.productTaken=false;
 		deleteProduct();
 	}
 	
 	public void deleteProduct() {
 		this.listaProductos.remove(0);
-		if(this.listaProductos.size()!=0) {
-			produce();
-		}
+		produce();
 	}
 
 	public int getCorrespondientLineId() {
@@ -83,6 +103,10 @@ public class Workstation extends Segment{
 
 	public String getName() {
 		return name;
+	}
+
+	public List<Product> getListaProductos() {
+		return listaProductos;
 	}
 
 	public void setName(String name) {
@@ -98,6 +122,37 @@ public class Workstation extends Segment{
 		this.productTaken = productTaken;
 	}
 
+	@Override
+	public boolean askForPriority() {
+		try {
+			priority.acquire();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;	
+	}
+	
+	public boolean askForPriority17() {
+		boolean bool;
+		bool=priority.tryAcquire();
+		
+		return bool;	
+	}
 
+	@Override
+	public void letPriority() {
+		priority.release();
+	}
+	
+	@Override
+	public int getLineId() {
+		return correspondientLineId;
+	}
+	
+	public int getPermits() {
+		return priority.availablePermits();
+	}
 	
 }
