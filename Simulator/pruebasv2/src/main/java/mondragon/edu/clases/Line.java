@@ -8,6 +8,16 @@ import javax.persistence.Transient;
 
 import mondragon.edu.control.ControlVehicles;
 
+
+/**
+ * Entity class for Line. Extends from Line
+ * 
+ * @author kepaurzelai
+ * @param nextSegment
+ * @param nextSegment2 some lines have two next segments for shorter routes
+ * @param control vehicle controller
+ * @param priority a semaphore for taking the priority
+ */
 @Entity
 public class Line extends Segment{
 	
@@ -68,6 +78,10 @@ public class Line extends Segment{
 		
 	}
 
+	/**
+	 * 
+	 * @see mondragon.edu.clases.Segment#askForPriority()
+	 */
 	@Override
 	public boolean askForPriority() {
 		try {
@@ -80,11 +94,19 @@ public class Line extends Segment{
 		return true;	
 	}
 
+	/**
+	 * 
+	 * @see mondragon.edu.clases.Segment#letPriority()
+	 */
 	@Override
 	public void letPriority() {
 		priority.release();
 	}
 
+	/**
+	 * 
+	 * @see mondragon.edu.clases.Segment#getLineId()
+	 */
 	@Override
 	public int getLineId() {
 		

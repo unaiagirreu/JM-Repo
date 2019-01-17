@@ -19,6 +19,11 @@ import mondragon.edu.service.OrderService;
 import mondragon.edu.service.ProductService;
 import mondragon.edu.service.VehicleService;
 
+/**
+ * Entity class for Vehicle and for his movements from segment to segment
+ * 
+ * @author unaiagirre
+ */
 @Entity
 @Table(name = "vehicle")
 public class Vehicle implements Runnable{
@@ -61,10 +66,10 @@ public class Vehicle implements Runnable{
 	
 	@Transient
 	OrderService orderService;
-	
+
 	@Transient
 	VehicleService vehicleService;
-	
+
 	public Vehicle() {}
 	public Vehicle(int id, ControlVehicles control,AnnotationConfigApplicationContext context) {//aqui se tendra que inicializar tmb con el current segment, pero de momento pa no tener que andar pasando la lista de segments pues no se hace. cuando este la base de datos echa se hace.
 		this.id=id;
@@ -77,6 +82,13 @@ public class Vehicle implements Runnable{
 		vehicleService = context.getBean(VehicleService.class);
 	}
 
+	/**
+	 * The vehicle moves from segment to segment with the product that has been asigned to it. This function is called once the vehicle
+	 * has the product.
+	 * 
+	 * @param product the product the vehicle is going to move
+	 * @throws InterruptedException if the thread is interrupted
+	 */
 	public void move(Product product) throws InterruptedException {
 		int dim=this.ruta.size();
 		System.out.println("El vehiculo=" + this.id + " ha pillau el producto=" + product.getName());
@@ -101,6 +113,12 @@ public class Vehicle implements Runnable{
 		waiting();
 	}
 	
+	/**
+	 * This function set a product status as finished and then looks if all the products of the order are finished. If they are, 
+	 * sets order status as finished.p
+	 * 
+	 * @param product the product you want to set as finished
+	 */
 	private void setProductFinished(Product product) {
 		productService.setStatus(product, "finished");
 		if(orderService.lookForProductStatus(product.getOrder())) {
@@ -108,6 +126,15 @@ public class Vehicle implements Runnable{
 		}
 		
 	}
+	
+	/**
+	 * This functions moves a vehicles from where it is to where the product is, to take it and 
+	 * to carry it to his destination. He also looks if the vehicle is on a parking or not. If yes, 
+	 * he set the parking status free.
+	 * 
+	 * @param product the product that the vehicle wants to take
+	 * @throws InterruptedException if the thread is interrupted
+	 */
 	public void recogerProducto(Product product) throws InterruptedException {
 		if((this.currentSegment.getId()>22)&&(this.currentSegment.getId()<27)) {
 			Parking parking=(Parking) this.getCurrentSegment();
@@ -129,7 +156,13 @@ public class Vehicle implements Runnable{
 		productService.setVehicleId(product, this.id+1);
 	}
 	
-	private void goToParking(Parking parking) throws InterruptedException {
+	/**
+	 * This function moves a vehicle to a parking
+	 * 
+	 * @param parking the parking is the destination of the vehicle
+	 * @throws InterruptedException
+	 */
+	public void goToParking(Parking parking) throws InterruptedException {
 		
 		this.ruta.add(parking.getId());
 		int dim=this.ruta.size();
@@ -152,6 +185,9 @@ public class Vehicle implements Runnable{
 		waiting();
 	}
 	
+	/**
+	 * Lets the priority of the segment when the vehicle arrives to another one
+	 */
 	private void letPriority() {
 		try {
 			controlVehicles.takeNextLine(this.getCurrentSegment().getId(), false, this);
@@ -162,6 +198,11 @@ public class Vehicle implements Runnable{
 		}
 	}
 	
+	/**
+	 * The vehicle tries to take the next segment priority. If the vehicle is aproaching to the workstation 1, he will also ask for 
+	 * his priority
+	 * 	 
+	 */
 	private void askPriority() {
 		try {
 	//		if(this.id==1)System.out.println("hola" + ruta.get(0));
@@ -183,12 +224,22 @@ public class Vehicle implements Runnable{
 		
 	}
 	
+	/**
+	 * A simple sleep to go from segment to segment
+	 * 
+	 * @throws InterruptedException if the thread is interrupted
+	 */
 	private void moveToNextLine() throws InterruptedException {//habria que pedir permisos a las lines
-		Thread.sleep(1000);
+		Thread.sleep(5000);
 		
 	//	System.out.println("moved from: "+this.currentSegment.getId()+" to: "+this.ruta.get(0));		
 	}
 
+	/**
+	 * A simple function to set which is the product the vehicle is going to move
+	 * 
+	 * @param product the product the vehicle is going to move
+	 */
 	public void moveProduct(Product product) {
 		this.productToMove = product;
 	}
@@ -202,6 +253,11 @@ public class Vehicle implements Runnable{
 		}
 	}
 	
+	/**
+	 * Keeps waiting to someone to notify him. If the moveToParking is activated, once they notify him he goes to a parking.
+	 * 
+	 * @throws InterruptedException if the thread is interrupted
+	 */
 	private void waiting() throws InterruptedException {
 		synchronized(this) {
 			this.wait();
@@ -210,11 +266,21 @@ public class Vehicle implements Runnable{
 		else move(this.productToMove);//aqui una variable para que haga el move en caso de que haya un producto y si no sera que tieen que ir a un parking
 	}
 	
+	/**
+	 * This function is called when we want move a vehicle to a parking. We ask for a route and then we move the vehicle
+	 * 
+	 * @throws InterruptedException if the thread is interrupted
+	 */
 	private void moveToTheParking() throws InterruptedException {
 		
 		goToParking(controlVehicles.definirRutaParking(this));
 	}
 
+	/**
+	 * This function sets the vehicle next route
+	 * 
+	 * @param ruta the route we want to set
+	 */
 	public void setRuta(List<Integer> ruta) {
 		this.ruta=ruta;
 	}

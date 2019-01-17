@@ -26,7 +26,12 @@ import mondragon.edu.clases.Segment;
 import mondragon.edu.clases.Vehicle;
 import mondragon.edu.clases.Workstation;
 
-
+/**
+ * Class for hibernate connection
+ * 
+ * @author inigoarenaza
+ *
+ */
 
 @Configuration
 @PropertySource("classpath:db.properties")

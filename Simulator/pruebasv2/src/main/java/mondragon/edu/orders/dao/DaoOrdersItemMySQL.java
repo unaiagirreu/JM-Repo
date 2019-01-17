@@ -12,25 +12,40 @@ import org.springframework.stereotype.Repository;
 
 import mondragon.edu.clases.Order;
 import mondragon.edu.clases.Product;
-
+/**
+ * Implements order dao
+ * 
+ * @author unaiagirre 
+ *
+ */
 @Repository
 public class DaoOrdersItemMySQL implements DaoOrdersItem{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	/**
+	 * Add a order to the database
+	 * 
+	 * @param order the order adding to the database
+	 */
 	public boolean add(Order order) {
 		sessionFactory.getCurrentSession().save(order);
 		return true;
 	}
 
+	/**
+	 * This function searchs in the databse for pending orders
+	 * 
+	 * @return list of all the ready orders
+	 */
 	@Transactional
 	@Override
 	public List<Order> searchReadyOrder() {
 		List<Order> orderList=new ArrayList<>();
 		
 		@SuppressWarnings("unchecked")
-		TypedQuery<Order> query=sessionFactory.getCurrentSession().createQuery("from Order where status='pendiente'");
+		TypedQuery<Order> query=sessionFactory.getCurrentSession().createQuery("from Order where status='pending'");
 		orderList=query.getResultList();		
 		return orderList;
 	}

@@ -17,6 +17,12 @@ import mondragon.edu.control.ControlOrders;
 import mondragon.edu.control.ControlVehicles;
 import mondragon.edu.dbThread.HearDB;
 
+/**
+ * Main class of the project
+ * 
+ * @author unaiagirre
+ *
+ */
 public class Main {
 	
 	List<Segment> SegmentList;
@@ -25,12 +31,12 @@ public class Main {
 	ControlOrders controlOrders;
 	ControlVehicles controlVehicles;
 	HearDB hearDB;
-	Scanner teclado;//pa simular que entran orders
-	int ejec;//pa simnular que entran orders
+//	Scanner teclado;//pa simular que entran orders
+//	int ejec;//pa simnular que entran orders
 	
 	public Main() {
 
-		teclado=new Scanner (System.in);
+	//	teclado=new Scanner (System.in);
 		AnnotationConfigApplicationContext context = 
 	            new AnnotationConfigApplicationContext(AppConfig.class);
 
@@ -40,7 +46,7 @@ public class Main {
 		addOrder();
 		hearDB = new HearDB(context, controlOrders);
 		inicializarEscuchaBD();
-		do {
+	/*	do {
 			ejec = menu();
 			
 			switch(ejec) {
@@ -56,10 +62,12 @@ public class Main {
 
 			break;
 			}
-		}while (ejec != -1);
+		}while (ejec != -1);*/
 		
 	}
-	
+	/**
+	 * Init the HearBD class, for looking to new orders
+	 */
 	private void inicializarEscuchaBD() {
 	
 		Thread thread= new Thread(hearDB);
@@ -67,7 +75,7 @@ public class Main {
 		
 	}
 
-	public void hacerPedido() {
+	/*public void hacerPedido() {
 		Order order;
 		List<Product> lista=new ArrayList<>();
 		do {
@@ -93,9 +101,9 @@ public class Main {
 		}while (ejec != 0);
 		order = new Order(0, lista);
 		controlOrders.addOrder(order);
-	}
+	}*/
 	
-	public int menu() {
+/*	public int menu() {
 		int sele;
 		System.out.println("Selecciona ");
 		System.out.println("1: meter order");
@@ -118,14 +126,16 @@ public class Main {
 		teclado.nextLine();
 		return sele;
 	}
-	
-    private void addSegmentsToDatabase() {
+	*/
+   /* private void addSegmentsToDatabase() {
     	//SegmentItemFacade database= new SegmentItemFacade();
 		for (Segment s: SegmentList) {
 			//database.saveSegment(s);
 		}
-	}
-
+	}*/
+	/**
+	 * Function for initializating controlOrders
+	 */
 	private void addOrder() {
 		controlOrders=new ControlOrders(SegmentList);
 	//	controlOrders.addOrder(order);
@@ -140,21 +150,17 @@ public class Main {
     	
     }
 
-
+	/**
+	 * Calls to two functions to iniciate segments and segment threads
+	 */
 	public void inicializar() {
     	inicializarSegmentos();
-    	inicializarOrders();
+   // 	inicializarOrders();
     	initAllThreads();
-    	inicializarHibernate();
     }
     
 
-    private void inicializarHibernate() {
-		
-		
-	}
-
-	private void inicializarOrders() {
+/*	private void inicializarOrders() {
     	order1=new ArrayList<Product>();
     	order1.add(new Product(0,"Monitor Asus 1", (Workstation)SegmentList.get(17), (Workstation)SegmentList.get(16), 5));
     	order1.add(new Product(1,"Monitor Asus 2", (Workstation)SegmentList.get(17), (Workstation)SegmentList.get(16), 5));
@@ -162,9 +168,12 @@ public class Main {
     	order1.add(new Product(3,"Laptop hp 1", (Workstation)SegmentList.get(18), (Workstation)SegmentList.get(16), 7));
     	order1.add(new Product(4,"Laptop hp 2", (Workstation)SegmentList.get(18), (Workstation)SegmentList.get(16), 7));
 		order=new Order(1, order1);
-	}
+	}*/
 
-	private void inicializarSegmentos() {
+	/**
+	 * This function iniciate all the segments the simulation has
+	 */
+	public void inicializarSegmentos() {
 		SegmentList=new ArrayList<Segment>();
 		
     	SegmentList.add(new Line(1, 2, 13, controlVehicles));//-1 equivale a null
@@ -197,18 +206,28 @@ public class Main {
      	SegmentList.add(new Parking(25,"parking 3", SegmentList.get(7).getId(), controlVehicles)); 
      	SegmentList.add(new Parking(26,"parking 4", SegmentList.get(9).getId(), controlVehicles));    	
     }
-	
+	/**
+	 * Iniciate all the threads
+	 */
 	private void initAllThreads() {
 		for (int i=0;i<SegmentList.size();i++) {
 			initThread(SegmentList.get(i));
 		}
 	}
 
+	/**
+	 * Iniciate a thread
+	 * @param s its a segment. We iniciate his thread
+	 */
 	private void initThread(Segment s) {
 		Thread thread=new Thread(s);
 		thread.setName("segment thread id: "+s.getId());
 		thread.start();
 		
+	}
+
+	public List<Segment> getSegmentList() {
+		return SegmentList;
 	}
 
 }

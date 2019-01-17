@@ -8,7 +8,11 @@ import javax.persistence.Transient;
 
 import mondragon.edu.control.ControlVehicles;
 
-
+/**
+ * Entity class for Segment. Extends from Segment.
+ * 
+ * @author unaiagirre
+ */
 @Entity
 public class Parking extends Segment{
 	
@@ -54,11 +58,9 @@ public class Parking extends Segment{
 	}
 
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 
 	@Override
@@ -66,7 +68,10 @@ public class Parking extends Segment{
 		// TODO Auto-generated method stub
 		
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see mondragon.edu.clases.Segment#askForPriority()
+	 */
 	@Override
 	public boolean askForPriority() {
 		try {
@@ -78,12 +83,18 @@ public class Parking extends Segment{
 		
 		return true;	
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see mondragon.edu.clases.Segment#letPriority()
+	 */
 	@Override
 	public void letPriority() {
 		priority.release();
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see mondragon.edu.clases.Segment#getLineId()
+	 */
 	@Override
 	public int getLineId() {
 		return correspondientLineId;

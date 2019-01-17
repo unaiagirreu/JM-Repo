@@ -1,7 +1,5 @@
 package mondragon.edu.clases;
 
-import java.util.concurrent.Semaphore;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
+/**
+ * Entity abstract class for Segment
+ * 
+ * @author unaiagirre
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "segment")
@@ -53,10 +55,25 @@ public abstract class Segment implements Runnable{
 
 	public abstract void run();
 	
+	/**
+	 * A thread will try to adquire the priority
+	 * 
+	 * @return true if the priority is available
+	 */
 	public abstract boolean askForPriority();
 	
+	/**
+	 * A thread will try to let the priority
+	 * 
+	 * @return true if letting priority was succesfull
+	 */
 	public abstract void letPriority();
 
+	/**
+	 * When we dont know if a vehicle is on a parking or workstation and we need the correspondient line we use this function
+	 * 
+	 * @return the correspondent line
+	 */
 	public abstract int getLineId();
 	
 

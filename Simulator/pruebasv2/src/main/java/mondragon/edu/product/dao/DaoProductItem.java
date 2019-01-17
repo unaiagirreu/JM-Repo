@@ -4,6 +4,12 @@ import java.util.List;
 
 import mondragon.edu.clases.Product;
 
+/**
+ * Interface for product dao
+ * 
+ * @author unaiagirre
+ *
+ */
 public interface DaoProductItem {
 
 	boolean add(Product product);

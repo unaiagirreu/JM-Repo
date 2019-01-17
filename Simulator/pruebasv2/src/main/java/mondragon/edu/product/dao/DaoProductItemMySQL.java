@@ -13,18 +13,34 @@ import org.springframework.stereotype.Repository;
 import mondragon.edu.clases.Order;
 import mondragon.edu.clases.Product;
 
+/**
+ * Implemets product dao
+ * 
+ * @author unaiagirre
+ *
+ */
 @Repository
 public class DaoProductItemMySQL implements DaoProductItem{
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Adds a product to the database
+	 * 
+	 * @param product the product we add to the database
+	 */
 	public boolean add(Product product) {
 		System.out.println("aaaaa");
 	    sessionFactory.getCurrentSession().save(product);
 	    return true;
 	}
 
+	/**
+	 * This function searhcs all the products of a order
+	 * 
+	 * @return returns a list of products
+	 */
 	@Transactional
 	@Override
 	public List<Product> seachProductsByOrder(int id) {
@@ -36,6 +52,12 @@ public class DaoProductItemMySQL implements DaoProductItem{
 		return productList;
 	}
 
+	/**
+	 * This function changes the status of a product
+	 * 
+	 * @param product the product we want to change
+	 * @param status the status we want to set
+	 */
 	@Transactional
 	@Override
 	public boolean setStatus(Product product, String string) {
@@ -45,6 +67,12 @@ public class DaoProductItemMySQL implements DaoProductItem{
 		return true;
 	}
 
+	/**
+	 * Set a vehicle id to a product
+	 * 
+	 * @param product the product we want to assign the vehicle id
+	 * @param id the vehicle id
+	 */
 	@Transactional
 	@Override
 	public boolean setVehicleId(Product product, Integer id) {

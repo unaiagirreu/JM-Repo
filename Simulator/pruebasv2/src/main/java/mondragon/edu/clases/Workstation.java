@@ -10,6 +10,11 @@ import javax.persistence.Transient;
 
 import mondragon.edu.control.ControlVehicles;
 
+/**
+ * Entity class for Workstation. Extends from Segment.
+ * 
+ * @author unaiagirre
+ */
 @Entity
 public class Workstation extends Segment{
 	
@@ -45,12 +50,21 @@ public class Workstation extends Segment{
 		productTaken=false;
 	}
 	
-	
+	/**
+	 * This function adds a product to the workstation queue. 
+	 * 
+	 * @param product the product adding to the workstation
+	 */
 	public void addProduct(Product product) {
 		this.listaProductos.add(product);
 		System.out.println(product.getName()+ " added to the workstation");
 	}
 
+	/**
+	 * This function generates products by sleeping during the specific time the product has.
+	 * 
+	 * @return true if the product is well generated
+	 */
 	public boolean makeProduct() {
 
 		try {
@@ -65,6 +79,11 @@ public class Workstation extends Segment{
 
 	}
 	
+	/**
+	 * While they are products in the product queue, this function keeps generating this products. After
+	 * a product is generated, it calls to a vehicle and once a vehicle comes and takes the product, it 
+	 * delete the product.
+	 */
 	public void produce() {
 		if(listaProductos.size()==0) {
 			try {
@@ -88,6 +107,9 @@ public class Workstation extends Segment{
 		deleteProduct();
 	}
 	
+	/**
+	 * This function deletes the product from the list
+	 */
 	public void deleteProduct() {
 		this.listaProductos.remove(0);
 		produce();
@@ -122,6 +144,9 @@ public class Workstation extends Segment{
 		this.productTaken = productTaken;
 	}
 
+	/**
+	 * @see mondragon.edu.clases.Segment#askForPriority()
+	 */
 	@Override
 	public boolean askForPriority() {
 		try {
@@ -134,6 +159,13 @@ public class Workstation extends Segment{
 		return true;	
 	}
 	
+	/**
+	 * This function is used to take the first workstation priority when you are aproaching to it. If we get the priority of the 
+	 * line before the workstation the vehicle in the workstation cant go out so when we aproaching to the workstation
+	 * we ask for his priority.
+	 * 
+	 * @return true if the priority is available
+	 */
 	public boolean askForPriority17() {
 		boolean bool;
 		bool=priority.tryAcquire();
@@ -141,11 +173,16 @@ public class Workstation extends Segment{
 		return bool;	
 	}
 
+	/**
+	 * @see mondragon.edu.clases.Segment#letPriority()
+	 */
 	@Override
 	public void letPriority() {
 		priority.release();
 	}
-	
+	/**
+	 * @see mondragon.edu.clases.Segment#getLineId()
+	 */
 	@Override
 	public int getLineId() {
 		return correspondientLineId;

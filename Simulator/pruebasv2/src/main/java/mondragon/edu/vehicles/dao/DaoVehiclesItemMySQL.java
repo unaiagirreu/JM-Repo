@@ -12,6 +12,12 @@ import mondragon.edu.clases.Order;
 import mondragon.edu.clases.Segment;
 import mondragon.edu.clases.Vehicle;
 
+/**
+ * Implements vehicles dao
+ * 
+ * @author unaiagirre
+ *
+ */
 @Repository
 public class DaoVehiclesItemMySQL implements DaoVehiclesItem{
 

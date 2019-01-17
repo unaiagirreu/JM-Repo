@@ -16,7 +16,14 @@ import mondragon.edu.clases.Segment;
 import mondragon.edu.clases.Vehicle;
 import mondragon.edu.clases.Workstation;
 import mondragon.edu.service.SegmentService;
+import mondragon.edu.service.VehicleService;
 
+/**
+ * Class for controlling vehicles and movements
+ * 
+ * @author unaiagirre
+ *
+ */
 public class ControlVehicles {
 
 	static Semaphore sem;
@@ -32,6 +39,7 @@ public class ControlVehicles {
 	Vehicle vehicle3;
 	Vehicle vehicle4;
 	SegmentService segmentService;
+	VehicleService vehicleService;
 	
 	public ControlVehicles(AnnotationConfigApplicationContext context) {
 		this.context=context;
@@ -40,22 +48,42 @@ public class ControlVehicles {
 		sem = new Semaphore(1);
 		rutas=new HashMap<>();
 		segmentService = context.getBean(SegmentService.class);
+		vehicleService = context.getBean(VehicleService.class);
 	}
 	
+	/**
+	 * This function sets the segment list, the current segment of each vehicle, and the status of the vehicles
+	 * 
+	 * @param SegmentList the segment list we want to set
+	 */
 	public void setSegmentList(List<Segment> SegmentList) {
 		segmentList=SegmentList;
 		vehicle0.setCurrentSegment(segmentList.get(22));
+		vehicleService.setCurrentSegment(vehicle0, segmentList.get(22));
+		vehicleService.setStatus(vehicle0, "stoped");
 		segmentList.get(22).askForPriority();
 		vehicle1.setCurrentSegment(segmentList.get(23));
+		vehicleService.setCurrentSegment(vehicle1, segmentList.get(23));
+		vehicleService.setStatus(vehicle1, "stoped");
 		segmentList.get(23).askForPriority();
 		vehicle2.setCurrentSegment(segmentList.get(24));
+		vehicleService.setCurrentSegment(vehicle2, segmentList.get(24));
+		vehicleService.setStatus(vehicle2, "stoped");
 		segmentList.get(24).askForPriority();
 		vehicle3.setCurrentSegment(segmentList.get(25));
+		vehicleService.setCurrentSegment(vehicle3, segmentList.get(25));
+		vehicleService.setStatus(vehicle3, "stoped");
 		segmentList.get(25).askForPriority();
 		vehicle4.setCurrentSegment(segmentList.get(16));
+		vehicleService.setCurrentSegment(vehicle4, segmentList.get(16));
+		vehicleService.setStatus(vehicle4, "stoped");
 		segmentList.get(16).askForPriority();
 	}
 	
+	/**
+	 * This function initialize all the vehicle threads. We also add the vehicles to two different lists. One to have all the vehicles
+	 * and another one to have just the available ones
+	 */
 	private void initVehicles() {
 		listVehicles= new ArrayList<Vehicle>();
 		listAvailableVehicles= new ArrayList<Vehicle>();
@@ -88,6 +116,13 @@ public class ControlVehicles {
 		listAvailableVehicles=listVehicles;
 	}
 
+	/**
+	 * This function adds a vehicle to the available vehicle list
+	 * 
+	 * @param vehicle the vehicle you want to add to the list
+	 * @throws InterruptedException we adquire a semaphore. If is not available the thread will be waiting to someone to release it. Trow
+	 * exception if interrupted
+	 */
 	public void addVehicle(Vehicle vehicle) throws InterruptedException {
 		mutEx.acquire();
 		listAvailableVehicles.add(vehicle);
@@ -95,6 +130,15 @@ public class ControlVehicles {
 		
 	}
 
+	/**
+	 * This function is called when a product is finished and you want to call a vehicle to take it 
+	 * and to carry it to the products destiny.
+	 * First we take a available vehicle and we carry it to the products origin workstation.
+	 * Then once the vehicle has the product we carry both to the first workstation where all the products are carried.
+	 * 
+	 * @param product the product calling to a vehicle
+	 * @throws InterruptedException if the thread is interrupted
+	 */
 	public void callVehicle(Product product) throws InterruptedException{
 		Vehicle vehicle;
 		sem.acquire();		
@@ -117,6 +161,12 @@ public class ControlVehicles {
 		sem.release();
 	}
 	
+	/**
+	 * Defines the shortest route from the vehicles current segment to the product origin.
+	 * 
+	 * @param vehicle the vehicle going for the product
+	 * @param product the product asking for a vehicle
+	 */
 	public void definirRutaRecogida(Vehicle vehicle, Product product) {
 		
 		
@@ -127,6 +177,12 @@ public class ControlVehicles {
 		rutas.clear();
 	}
 	
+	/**
+	 * This function defines the shortest route from the product origin to the product destination
+	 * 
+	 * @param vehicle the vehicle carrying the product
+	 * @param product the product carried
+	 */
 	public void definirRutaSalida(Vehicle vehicle, Product product) {
 		
 	//	System.out.println(segmentService.findCorrespondentLine(product.getSegmentOrigin().getCorrespondientLineId()).getId()+ " " + product.getSegmentOrigin().getCorrespondientLineId());
@@ -135,6 +191,12 @@ public class ControlVehicles {
 		rutas.clear();
 	}
 
+	/**
+	 * This function definesthe shortest route for the vehicle going to a parking
+	 * 
+	 * @param vehicle the vehicle going to the parking
+	 * @return return the parking available
+	 */
 	public Parking definirRutaParking(Vehicle vehicle) {
 		try {
 			sem.acquire();
@@ -151,6 +213,11 @@ public class ControlVehicles {
 		return parking;
 	}
 
+	/**
+	 * Search for a available parking getting all the parkings from the segment list and looking if their state its occupied or not
+	 * 
+	 * @return returns the available parking
+	 */
 	private Parking searchAvailableParking() {
 		Parking parking=null;
 		for (int i=22;i<segmentList.size();i++) {//los parkines estan del 22 al 25
@@ -161,6 +228,16 @@ public class ControlVehicles {
 		return parking;
 	}
 
+	/**
+	 * This function calculates the route from a line to another line. Each line has a next segment and sometimes two possible next
+	 * segments. We make a route with the default next segments and when a line has two next segments, we call to calcularRutaAlternativa
+	 * to calculate the route taking the second posible next segment.
+	 * 
+	 * @param origin from where
+	 * @param destination to where
+	 * @param product the product moving
+	 * @param goToProduct if the route is for going to a product or no, to add the product destination to the route or not.
+	 */
 	public void calcularRuta(Line origin, Line destination, Product product, boolean goToProduct) {//if goToProduct is true he is going for product
 		List<Integer> ruta=new ArrayList<>();
 		Line actual=origin;
@@ -182,6 +259,15 @@ public class ControlVehicles {
 		rutas.put(ruta.size(), ruta);
 	}
 	
+	/**
+	 * This function calculates an alternative route for the vehicle, for getting a shorter route if possible
+	 * 
+	 * @param desvio where the deviation happens
+	 * @param ruta2 the route before the deviation
+	 * @param destination the destination of the route
+	 * @param product the product carrying
+	 * @param goToProduct if we are going to a product or no
+	 */
 	public void calcularRutaAlternativa(int desvio, Integer[] ruta2, Line destination, Product product, boolean goToProduct) {
 		List<Integer> rutaAlter=new ArrayList<>();
 		for (int i = 0; i < ruta2.length; i++) {
@@ -202,6 +288,11 @@ public class ControlVehicles {
 		rutas.put(rutaAlter.size(), rutaAlter);
 	}
 	
+	/**
+	 * This function selects the shortest route from the generated ones
+	 * 
+	 * @return the shortest route
+	 */
 	public List<Integer> rutaMasCorta(){
 		int smallestKey;
 		Set<Integer> sizes=rutas.keySet();
@@ -217,6 +308,13 @@ public class ControlVehicles {
 		return rutas;
 	}
 	
+	/**
+	 * This function sets the next segment to a vehicle
+	 * 
+	 * @param id the id for searching the segment
+	 * @param vehicle the vehicle moving
+	 * @throws InterruptedException
+	 */
 	public void setNextSegment(int id, Vehicle vehicle) throws InterruptedException {
  
 		mutEx.acquire();	
@@ -224,6 +322,15 @@ public class ControlVehicles {
 		mutEx.release();
 	}
 	
+	/**
+	 * This function takes and lets the priority of a segment when a vehicle moves from one to another
+	 * 
+	 * @param id the id of the segment we are taking or leting
+	 * @param ask if true we are taking a segment priority. If false we are letting it
+	 * @param vehicle the vehicle asking for the priority
+	 * @throws InterruptedException we adquire a semaphore. If is not available the thread will be waiting to someone to release it. Trow
+	 * exception if interrupted
+	 */
 	public void takeNextLine(int id, boolean ask, Vehicle vehicle) throws InterruptedException {
 		if(ask) {
 		//	if(vehicle.getId()==1)System.out.println(id);
@@ -243,6 +350,9 @@ public class ControlVehicles {
 		}
 	}
 
+	/**
+	 * When you are aproaching to the first workstation you ask if it is free or not
+	 */
 	public void askForWorkstation() {
 		for(int i=0;i<listAvailableVehicles.size() ;i++) {
 			while(listAvailableVehicles.size()==0) {

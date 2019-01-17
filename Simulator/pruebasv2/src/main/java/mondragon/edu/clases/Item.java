@@ -7,9 +7,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+/**
+ * Entity class for Item
+ * 
+ * @author kepaurzelai
+ * @param id 
+ * @param name
+ * @param description
+ * @param category
+ * @param price
+ * @param catalog
+ * @param img
+ */
 @Entity
 @Table(name = "item")
 public class Item {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
