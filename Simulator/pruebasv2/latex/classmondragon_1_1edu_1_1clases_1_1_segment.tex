@@ -1,0 +1,110 @@
+\hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment}{}\section{mondragon.\+edu.\+clases.\+Segment Class Reference}
+\label{classmondragon_1_1edu_1_1clases_1_1_segment}\index{mondragon.edu.clases.Segment@{mondragon.edu.clases.Segment}}
+
+
+Inheritance diagram for mondragon.\+edu.\+clases.\+Segment\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1clases_1_1_segment__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for mondragon.\+edu.\+clases.\+Segment\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{classmondragon_1_1edu_1_1clases_1_1_segment__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_a7d65fcd7ac44affe1cc08db236af8288}\label{classmondragon_1_1edu_1_1clases_1_1_segment_a7d65fcd7ac44affe1cc08db236af8288}} 
+{\bfseries Segment} (int id)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_a94f400cd8b4b9e542b5fc61d70aea962}\label{classmondragon_1_1edu_1_1clases_1_1_segment_a94f400cd8b4b9e542b5fc61d70aea962}} 
+void {\bfseries set\+Id} (Integer id)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_aea2659c660c6253ff57d1c2a990df02e}\label{classmondragon_1_1edu_1_1clases_1_1_segment_aea2659c660c6253ff57d1c2a990df02e}} 
+String {\bfseries get\+State} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_ad11a5c89260624a60d430d93bd2ff444}\label{classmondragon_1_1edu_1_1clases_1_1_segment_ad11a5c89260624a60d430d93bd2ff444}} 
+void {\bfseries set\+State} (String state)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_ae6ae807c1ba8eb8e9b657a649812b5a8}\label{classmondragon_1_1edu_1_1clases_1_1_segment_ae6ae807c1ba8eb8e9b657a649812b5a8}} 
+Integer {\bfseries get\+Id} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_a18118ddb6c456446fa57e226e9077d89}\label{classmondragon_1_1edu_1_1clases_1_1_segment_a18118ddb6c456446fa57e226e9077d89}} 
+abstract void {\bfseries run} ()
+\item 
+abstract boolean \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_segment_a0ee7818c127f5117a723b8fece868030}{ask\+For\+Priority}} ()
+\item 
+abstract void \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_segment_af903bad2ccfd51fe2f8d21d437143a1e}{let\+Priority}} ()
+\item 
+abstract int \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_segment_af905b954e40e0c3d5b58673b03b972cc}{get\+Line\+Id}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Entity abstract class for \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_segment}{Segment}}
+
+\begin{DoxyAuthor}{Author}
+unaiagirre 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em state} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_a0ee7818c127f5117a723b8fece868030}\label{classmondragon_1_1edu_1_1clases_1_1_segment_a0ee7818c127f5117a723b8fece868030}} 
+\index{mondragon.edu.clases.Segment@{mondragon.edu.clases.Segment}!askForPriority@{askForPriority}}
+\index{askForPriority@{askForPriority}!mondragon.edu.clases.Segment@{mondragon.edu.clases.Segment}}
+\subsubsection{\texorpdfstring{askForPriority()}{askForPriority()}}
+{\footnotesize\ttfamily abstract boolean mondragon.\+edu.\+clases.\+Segment.\+ask\+For\+Priority (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+A thread will try to adquire the priority
+
+\begin{DoxyReturn}{Returns}
+true if the priority is available 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_af905b954e40e0c3d5b58673b03b972cc}\label{classmondragon_1_1edu_1_1clases_1_1_segment_af905b954e40e0c3d5b58673b03b972cc}} 
+\index{mondragon.edu.clases.Segment@{mondragon.edu.clases.Segment}!getLineId@{getLineId}}
+\index{getLineId@{getLineId}!mondragon.edu.clases.Segment@{mondragon.edu.clases.Segment}}
+\subsubsection{\texorpdfstring{getLineId()}{getLineId()}}
+{\footnotesize\ttfamily abstract int mondragon.\+edu.\+clases.\+Segment.\+get\+Line\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+When we dont know if a vehicle is on a parking or workstation and we need the correspondient line we use this function
+
+\begin{DoxyReturn}{Returns}
+the correspondent line 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1clases_1_1_segment_af905b954e40e0c3d5b58673b03b972cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1clases_1_1_segment_af903bad2ccfd51fe2f8d21d437143a1e}\label{classmondragon_1_1edu_1_1clases_1_1_segment_af903bad2ccfd51fe2f8d21d437143a1e}} 
+\index{mondragon.edu.clases.Segment@{mondragon.edu.clases.Segment}!letPriority@{letPriority}}
+\index{letPriority@{letPriority}!mondragon.edu.clases.Segment@{mondragon.edu.clases.Segment}}
+\subsubsection{\texorpdfstring{letPriority()}{letPriority()}}
+{\footnotesize\ttfamily abstract void mondragon.\+edu.\+clases.\+Segment.\+let\+Priority (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+A thread will try to let the priority
+
+\begin{DoxyReturn}{Returns}
+true if letting priority was succesfull 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/mondragon/edu/clases/Segment.\+java\end{DoxyCompactItemize}

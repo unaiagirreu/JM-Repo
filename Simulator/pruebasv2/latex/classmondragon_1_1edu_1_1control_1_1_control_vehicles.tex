@@ -1,0 +1,409 @@
+\hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles}{}\section{mondragon.\+edu.\+control.\+Control\+Vehicles Class Reference}
+\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles}\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+
+
+Collaboration diagram for mondragon.\+edu.\+control.\+Control\+Vehicles\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a9dc36b79310c15ee3628e314a8201c6f}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a9dc36b79310c15ee3628e314a8201c6f}} 
+{\bfseries Control\+Vehicles} (Annotation\+Config\+Application\+Context context)
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a3752f0ee665a4212470882d084bfaa67}{set\+Segment\+List}} (List$<$ \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_segment}{Segment}} $>$ Segment\+List)
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_afd9646551c40268a5fcf20153df94da5}{add\+Vehicle}} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle)  throws Interrupted\+Exception 
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab9a26a6fd5a585bd9468a9476feaf1cf}{call\+Vehicle}} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}} product)  throws Interrupted\+Exception
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ac45999cf276055a6695eaf35cf781775}{definir\+Ruta\+Recogida}} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}} product)
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_affe370c8235e69844a66697e87f2bb37}{definir\+Ruta\+Salida}} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}} product)
+\item 
+\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_parking}{Parking}} \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a4ea8338d43962d68e7c29bad88cfbcf3}{definir\+Ruta\+Parking}} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle)
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a12c621e7167cf4747f97a1689ab39ef1}{calcular\+Ruta}} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_line}{Line}} origin, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_line}{Line}} destination, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}} product, boolean go\+To\+Product)
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a7dbd4059c8380a37ffe66cc612940102}{calcular\+Ruta\+Alternativa}} (int desvio, Integer\mbox{[}$\,$\mbox{]} ruta2, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_line}{Line}} destination, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}} product, boolean go\+To\+Product)
+\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a634e96280352f4014334a21e8bac60b1}{ruta\+Mas\+Corta}} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a9c4d98e8dfc192cbdb5d8cf1761c9e6c}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a9c4d98e8dfc192cbdb5d8cf1761c9e6c}} 
+Map$<$ Integer, List$<$ Integer $>$ $>$ {\bfseries get\+Rutas} ()
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_acb4522d3a0e767ed873b602dd78d9c7b}{set\+Next\+Segment}} (int id, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle)  throws Interrupted\+Exception 
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ae3b614402c3b897174c7a2a81bc816ca}{take\+Next\+Line}} (int id, boolean ask, \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle)  throws Interrupted\+Exception 
+\item 
+void \mbox{\hyperlink{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a63aa6c69adc18b9af382fdcc7ae088ec}{ask\+For\+Workstation}} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab8ccff18e2a1484ea6b839e60eb99d3e}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab8ccff18e2a1484ea6b839e60eb99d3e}} 
+int {\bfseries get\+Permits} (int id)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_aaa6f6a72292003bda4a5386cb9a6f4f0}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_aaa6f6a72292003bda4a5386cb9a6f4f0}} 
+\mbox{\hyperlink{interfacemondragon_1_1edu_1_1service_1_1_segment_service}{Segment\+Service}} {\bfseries get\+Segment\+Service} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a2c4716e5ca4c91ca8693131573364953}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a2c4716e5ca4c91ca8693131573364953}} 
+void {\bfseries set\+Segment\+Service} (\mbox{\hyperlink{interfacemondragon_1_1edu_1_1service_1_1_segment_service}{Segment\+Service}} segment\+Service)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a9e04160290b657c04fc166dbfa81558a}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a9e04160290b657c04fc166dbfa81558a}} 
+void {\bfseries set\+Vehicle0} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle0)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ac87612b8880a7efed222f0020d841def}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ac87612b8880a7efed222f0020d841def}} 
+void {\bfseries set\+Vehicle1} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle1)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab4a31bcf2cba3bc090fe1353446d0950}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab4a31bcf2cba3bc090fe1353446d0950}} 
+void {\bfseries set\+Vehicle2} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle2)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a571ceccd71b09c02fa0914c281245574}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a571ceccd71b09c02fa0914c281245574}} 
+void {\bfseries set\+Vehicle3} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle3)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a8999f877667e96ecc4bf64fa78dacc1a}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a8999f877667e96ecc4bf64fa78dacc1a}} 
+void {\bfseries set\+Vehicle4} (\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} vehicle4)
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a3a6d876b544ff2b3321d846bcdff68ad}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a3a6d876b544ff2b3321d846bcdff68ad}} 
+\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} {\bfseries get\+Vehicle0} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a615fb7cb3e71039dbb9e0cd21048122f}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a615fb7cb3e71039dbb9e0cd21048122f}} 
+\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} {\bfseries get\+Vehicle1} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a68f59cea2d7891f4330fd549fb0bc623}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a68f59cea2d7891f4330fd549fb0bc623}} 
+\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} {\bfseries get\+Vehicle2} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ae6dfb3214b4661fef079c14cedb8565b}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ae6dfb3214b4661fef079c14cedb8565b}} 
+\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} {\bfseries get\+Vehicle3} ()
+\item 
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a2edd33db81f231ecd570e10bbb145065}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a2edd33db81f231ecd570e10bbb145065}} 
+\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}} {\bfseries get\+Vehicle4} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for controlling vehicles and movements
+
+\begin{DoxyAuthor}{Author}
+unaiagirre 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sem} & \\
+\hline
+{\em mut\+Ex} & \\
+\hline
+{\em list\+Vehicles} & \\
+\hline
+{\em list\+Available\+Vehicles} & \\
+\hline
+{\em segment\+List} & \\
+\hline
+{\em rutas} & \\
+\hline
+{\em context} & \\
+\hline
+{\em vehicle0} & \\
+\hline
+{\em vehicle1} & \\
+\hline
+{\em vehicle2} & \\
+\hline
+{\em vehicle3} & \\
+\hline
+{\em vehicle4} & \\
+\hline
+{\em segment\+Service} & \\
+\hline
+{\em vehicle\+Service} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_afd9646551c40268a5fcf20153df94da5}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_afd9646551c40268a5fcf20153df94da5}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!addVehicle@{addVehicle}}
+\index{addVehicle@{addVehicle}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{addVehicle()}{addVehicle()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+add\+Vehicle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}}}]{vehicle }\end{DoxyParamCaption}) throws Interrupted\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function adds a vehicle to the available vehicle list
+
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle} & the vehicle you want to add to the list \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & we adquire a semaphore. If is not available the thread will be waiting to someone to release it. Trow exception if interrupted \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a63aa6c69adc18b9af382fdcc7ae088ec}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a63aa6c69adc18b9af382fdcc7ae088ec}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!askForWorkstation@{askForWorkstation}}
+\index{askForWorkstation@{askForWorkstation}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{askForWorkstation()}{askForWorkstation()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+ask\+For\+Workstation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+When you are aproaching to the first workstation you ask if it is free or not Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a63aa6c69adc18b9af382fdcc7ae088ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a12c621e7167cf4747f97a1689ab39ef1}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a12c621e7167cf4747f97a1689ab39ef1}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!calcularRuta@{calcularRuta}}
+\index{calcularRuta@{calcularRuta}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{calcularRuta()}{calcularRuta()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+calcular\+Ruta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_line}{Line}}}]{origin,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_line}{Line}}}]{destination,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}}}]{product,  }\item[{boolean}]{go\+To\+Product }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function calculates the route from a line to another line. Each line has a next segment and sometimes two possible next segments. We make a route with the default next segments and when a line has two next segments, we call to calcular\+Ruta\+Alternativa to calculate the route taking the second posible next segment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & from where \\
+\hline
+{\em destination} & to where \\
+\hline
+{\em product} & the product moving \\
+\hline
+{\em go\+To\+Product} & if the route is for going to a product or no, to add the product destination to the route or not. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a12c621e7167cf4747f97a1689ab39ef1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a12c621e7167cf4747f97a1689ab39ef1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a7dbd4059c8380a37ffe66cc612940102}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a7dbd4059c8380a37ffe66cc612940102}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!calcularRutaAlternativa@{calcularRutaAlternativa}}
+\index{calcularRutaAlternativa@{calcularRutaAlternativa}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{calcularRutaAlternativa()}{calcularRutaAlternativa()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+calcular\+Ruta\+Alternativa (\begin{DoxyParamCaption}\item[{int}]{desvio,  }\item[{Integer \mbox{[}$\,$\mbox{]}}]{ruta2,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_line}{Line}}}]{destination,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}}}]{product,  }\item[{boolean}]{go\+To\+Product }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function calculates an alternative route for the vehicle, for getting a shorter route if possible
+
+
+\begin{DoxyParams}{Parameters}
+{\em desvio} & where the deviation happens \\
+\hline
+{\em ruta2} & the route before the deviation \\
+\hline
+{\em destination} & the destination of the route \\
+\hline
+{\em product} & the product carrying \\
+\hline
+{\em go\+To\+Product} & if we are going to a product or no \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a7dbd4059c8380a37ffe66cc612940102_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab9a26a6fd5a585bd9468a9476feaf1cf}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab9a26a6fd5a585bd9468a9476feaf1cf}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!callVehicle@{callVehicle}}
+\index{callVehicle@{callVehicle}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{callVehicle()}{callVehicle()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+call\+Vehicle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}}}]{product }\end{DoxyParamCaption}) throws Interrupted\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function is called when a product is finished and you want to call a vehicle to take it and to carry it to the products destiny. First we take a available vehicle and we carry it to the products origin workstation. Then once the vehicle has the product we carry both to the first workstation where all the products are carried.
+
+
+\begin{DoxyParams}{Parameters}
+{\em product} & the product calling to a vehicle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & if the thread is interrupted \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ab9a26a6fd5a585bd9468a9476feaf1cf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a4ea8338d43962d68e7c29bad88cfbcf3}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a4ea8338d43962d68e7c29bad88cfbcf3}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!definirRutaParking@{definirRutaParking}}
+\index{definirRutaParking@{definirRutaParking}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{definirRutaParking()}{definirRutaParking()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_parking}{Parking}} mondragon.\+edu.\+control.\+Control\+Vehicles.\+definir\+Ruta\+Parking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}}}]{vehicle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function definesthe shortest route for the vehicle going to a parking
+
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle} & the vehicle going to the parking \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return the parking available 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a4ea8338d43962d68e7c29bad88cfbcf3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ac45999cf276055a6695eaf35cf781775}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ac45999cf276055a6695eaf35cf781775}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!definirRutaRecogida@{definirRutaRecogida}}
+\index{definirRutaRecogida@{definirRutaRecogida}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{definirRutaRecogida()}{definirRutaRecogida()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+definir\+Ruta\+Recogida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}}}]{vehicle,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}}}]{product }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Defines the shortest route from the vehicles current segment to the product origin.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle} & the vehicle going for the product \\
+\hline
+{\em product} & the product asking for a vehicle \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ac45999cf276055a6695eaf35cf781775_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ac45999cf276055a6695eaf35cf781775_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_affe370c8235e69844a66697e87f2bb37}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_affe370c8235e69844a66697e87f2bb37}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!definirRutaSalida@{definirRutaSalida}}
+\index{definirRutaSalida@{definirRutaSalida}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{definirRutaSalida()}{definirRutaSalida()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+definir\+Ruta\+Salida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}}}]{vehicle,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_product}{Product}}}]{product }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function defines the shortest route from the product origin to the product destination
+
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle} & the vehicle carrying the product \\
+\hline
+{\em product} & the product carried \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_affe370c8235e69844a66697e87f2bb37_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_affe370c8235e69844a66697e87f2bb37_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a634e96280352f4014334a21e8bac60b1}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a634e96280352f4014334a21e8bac60b1}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!rutaMasCorta@{rutaMasCorta}}
+\index{rutaMasCorta@{rutaMasCorta}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{rutaMasCorta()}{rutaMasCorta()}}
+{\footnotesize\ttfamily List$<$Integer$>$ mondragon.\+edu.\+control.\+Control\+Vehicles.\+ruta\+Mas\+Corta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function selects the shortest route from the generated ones
+
+\begin{DoxyReturn}{Returns}
+the shortest route 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a634e96280352f4014334a21e8bac60b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_acb4522d3a0e767ed873b602dd78d9c7b}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_acb4522d3a0e767ed873b602dd78d9c7b}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!setNextSegment@{setNextSegment}}
+\index{setNextSegment@{setNextSegment}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{setNextSegment()}{setNextSegment()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+set\+Next\+Segment (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}}}]{vehicle }\end{DoxyParamCaption}) throws Interrupted\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function sets the next segment to a vehicle
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the id for searching the segment \\
+\hline
+{\em vehicle} & the vehicle moving \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a3752f0ee665a4212470882d084bfaa67}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_a3752f0ee665a4212470882d084bfaa67}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!setSegmentList@{setSegmentList}}
+\index{setSegmentList@{setSegmentList}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{setSegmentList()}{setSegmentList()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+set\+Segment\+List (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_segment}{Segment}} $>$}]{Segment\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function sets the segment list, the current segment of each vehicle, and the status of the vehicles
+
+
+\begin{DoxyParams}{Parameters}
+{\em Segment\+List} & the segment list we want to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ae3b614402c3b897174c7a2a81bc816ca}\label{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ae3b614402c3b897174c7a2a81bc816ca}} 
+\index{mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}!takeNextLine@{takeNextLine}}
+\index{takeNextLine@{takeNextLine}!mondragon.edu.control.ControlVehicles@{mondragon.edu.control.ControlVehicles}}
+\subsubsection{\texorpdfstring{takeNextLine()}{takeNextLine()}}
+{\footnotesize\ttfamily void mondragon.\+edu.\+control.\+Control\+Vehicles.\+take\+Next\+Line (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{boolean}]{ask,  }\item[{\mbox{\hyperlink{classmondragon_1_1edu_1_1clases_1_1_vehicle}{Vehicle}}}]{vehicle }\end{DoxyParamCaption}) throws Interrupted\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function takes and lets the priority of a segment when a vehicle moves from one to another
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the id of the segment we are taking or leting \\
+\hline
+{\em ask} & if true we are taking a segment priority. If false we are letting it \\
+\hline
+{\em vehicle} & the vehicle asking for the priority \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & we adquire a semaphore. If is not available the thread will be waiting to someone to release it. Trow exception if interrupted \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmondragon_1_1edu_1_1control_1_1_control_vehicles_ae3b614402c3b897174c7a2a81bc816ca_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/mondragon/edu/control/Control\+Vehicles.\+java\end{DoxyCompactItemize}
