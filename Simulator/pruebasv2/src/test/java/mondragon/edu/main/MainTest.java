@@ -10,7 +10,7 @@ public class MainTest {
 	
 	Main main;
 	@Before
-	public void init() {
+	public void init() throws InterruptedException {
 		main=new Main();
 	}
 	

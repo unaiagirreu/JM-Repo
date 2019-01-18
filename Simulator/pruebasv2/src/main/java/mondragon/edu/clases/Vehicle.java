@@ -23,6 +23,17 @@ import mondragon.edu.service.VehicleService;
  * Entity class for Vehicle and for his movements from segment to segment
  * 
  * @author unaiagirre
+ * @param id
+ * @param currentSegment
+ * @param destinationSegment
+ * @param status
+ * @param controlVehicles vehicle controller
+ * @param moveToParking
+ * @param ruta
+ * @param context
+ * @param vehicleService
+ * @param orderService
+ * @param productService
  */
 @Entity
 @Table(name = "vehicle")
@@ -45,9 +56,6 @@ public class Vehicle implements Runnable{
 	
 	@Transient
 	ControlVehicles controlVehicles;
-	
-	@Transient
-	boolean waiting;
 	
 	@Transient
 	boolean moveToParking;
@@ -74,7 +82,6 @@ public class Vehicle implements Runnable{
 	public Vehicle(int id, ControlVehicles control,AnnotationConfigApplicationContext context) {//aqui se tendra que inicializar tmb con el current segment, pero de momento pa no tener que andar pasando la lista de segments pues no se hace. cuando este la base de datos echa se hace.
 		this.id=id;
 		controlVehicles=control;
-		this.waiting=true;
 		this.moveToParking=false;
 		this.context=context;
 		orderService = context.getBean(OrderService.class);
@@ -187,41 +194,34 @@ public class Vehicle implements Runnable{
 	
 	/**
 	 * Lets the priority of the segment when the vehicle arrives to another one
+	 * @throws InterruptedException 
 	 */
-	private void letPriority() {
-		try {
-			controlVehicles.takeNextLine(this.getCurrentSegment().getId(), false, this);
+	private void letPriority() throws InterruptedException {
+		
+		controlVehicles.takeNextLine(this.getCurrentSegment().getId(), false, this);
 			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	/**
 	 * The vehicle tries to take the next segment priority. If the vehicle is aproaching to the workstation 1, he will also ask for 
 	 * his priority
+	 * @throws InterruptedException 
 	 * 	 
 	 */
-	private void askPriority() {
-		try {
+	private void askPriority() throws InterruptedException {
+		
 	//		if(this.id==1)System.out.println("hola" + ruta.get(0));
-			if(this.ruta.size()==2) {
-				if(this.ruta.get(1)==17) {
-					controlVehicles.askForWorkstation();					
-					controlVehicles.takeNextLine(this.ruta.get(1), true, this);		
-				}
-				
-			}
-			if(!this.ruta.get(0).equals(17)) {				
-				controlVehicles.takeNextLine(this.ruta.get(0), true, this);	
+		if(this.ruta.size()==2) {
+			if(this.ruta.get(1)==17) {
+				controlVehicles.askForWorkstation();					
+				controlVehicles.takeNextLine(this.ruta.get(1), true, this);		
 			}
 			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		
+		if(!this.ruta.get(0).equals(17)) {				
+			controlVehicles.takeNextLine(this.ruta.get(0), true, this);	
+		}
+			
 	}
 	
 	/**

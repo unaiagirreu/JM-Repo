@@ -13,6 +13,16 @@ import javax.persistence.Table;
  * Entity class for Product
  * 
  * @author jonfernandez
+ * @param id
+ * @param price
+ * @param description
+ * @param status
+ * @param segmentOrigin
+ * @param segmentDestination
+ * @param vehicle
+ * @param order
+ * @param time
+ * @param name
  */
 @Entity
 @Table(name = "product")

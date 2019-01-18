@@ -14,9 +14,15 @@ import mondragon.edu.control.ControlVehicles;
  * Entity class for Workstation. Extends from Segment.
  * 
  * @author unaiagirre
+ * @param correspondientLineId
+ * @param name
+ * @param listaProductos
+ * @param productTaken
+ * @param controlVehicles
+ * @param priority
  */
 @Entity
-public class Workstation extends Segment{
+public class Workstation extends Segment implements Runnable{
 	
 	@Column(name = "correspondientLineId")
 	public int correspondientLineId;
@@ -64,15 +70,13 @@ public class Workstation extends Segment{
 	 * This function generates products by sleeping during the specific time the product has.
 	 * 
 	 * @return true if the product is well generated
+	 * @throws InterruptedException 
 	 */
-	public boolean makeProduct() {
+	public boolean makeProduct() throws InterruptedException {
 
-		try {
-			Thread.sleep(this.listaProductos.get(0).getTime()*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		Thread.sleep(this.listaProductos.get(0).getTime()*1000);
+		
 		System.out.println(this.listaProductos.get(0).getName()+ " its ready!");
 		
 		return true;
@@ -83,34 +87,26 @@ public class Workstation extends Segment{
 	 * While they are products in the product queue, this function keeps generating this products. After
 	 * a product is generated, it calls to a vehicle and once a vehicle comes and takes the product, it 
 	 * delete the product.
+	 * @throws InterruptedException 
 	 */
-	public void produce() {
-		if(listaProductos.size()==0) {
-			try {
-				synchronized(this) {
+	public void produce() throws InterruptedException {
+		if(listaProductos.size()==0) {		
+			synchronized(this) {
 				System.out.println(this.name+" waiting");
 				wait();
-				}
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 		makeProduct();	
-		try {
-			controlVehicles.callVehicle(listaProductos.get(0));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		controlVehicles.callVehicle(listaProductos.get(0));
 		this.productTaken=false;
 		deleteProduct();
 	}
 	
 	/**
 	 * This function deletes the product from the list
+	 * @throws InterruptedException 
 	 */
-	public void deleteProduct() {
+	public void deleteProduct() throws InterruptedException {
 		this.listaProductos.remove(0);
 		produce();
 	}
@@ -137,7 +133,12 @@ public class Workstation extends Segment{
 
 	@Override
 	public void run() {
-		produce();	
+		try {
+			produce();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 
 	public void setProductTaken(boolean productTaken) {

@@ -12,6 +12,10 @@ import mondragon.edu.control.ControlVehicles;
  * Entity class for Segment. Extends from Segment.
  * 
  * @author unaiagirre
+ * @param correspondientLineId the line below
+ * @param name
+ * @param control
+ * @param priority
  */
 @Entity
 public class Parking extends Segment{
@@ -63,23 +67,14 @@ public class Parking extends Segment{
 	}
 
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
 	/*
 	 * (non-Javadoc)
 	 * @see mondragon.edu.clases.Segment#askForPriority()
 	 */
 	@Override
-	public boolean askForPriority() {
-		try {
-			priority.acquire();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public boolean askForPriority() throws InterruptedException {
+
+		priority.acquire();
 		
 		return true;	
 	}

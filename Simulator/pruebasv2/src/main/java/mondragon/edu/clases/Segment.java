@@ -13,11 +13,13 @@ import javax.persistence.Table;
  * Entity abstract class for Segment
  * 
  * @author unaiagirre
+ * @param id
+ * @param state
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "segment")
-public abstract class Segment implements Runnable{
+public abstract class Segment{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
@@ -52,15 +54,14 @@ public abstract class Segment implements Runnable{
 	public Integer getId() {
 		return id;
 	}
-
-	public abstract void run();
 	
 	/**
 	 * A thread will try to adquire the priority
 	 * 
 	 * @return true if the priority is available
+	 * @throws InterruptedException 
 	 */
-	public abstract boolean askForPriority();
+	public abstract boolean askForPriority() throws InterruptedException;
 	
 	/**
 	 * A thread will try to let the priority

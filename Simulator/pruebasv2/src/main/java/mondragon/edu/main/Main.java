@@ -34,7 +34,7 @@ public class Main {
 //	Scanner teclado;//pa simular que entran orders
 //	int ejec;//pa simnular que entran orders
 	
-	public Main() {
+	public Main() throws InterruptedException {
 
 	//	teclado=new Scanner (System.in);
 		AnnotationConfigApplicationContext context = 
@@ -210,7 +210,7 @@ public class Main {
 	 * Iniciate all the threads
 	 */
 	private void initAllThreads() {
-		for (int i=0;i<SegmentList.size();i++) {
+		for (int i=16;i<22;i++) {
 			initThread(SegmentList.get(i));
 		}
 	}
@@ -220,7 +220,7 @@ public class Main {
 	 * @param s its a segment. We iniciate his thread
 	 */
 	private void initThread(Segment s) {
-		Thread thread=new Thread(s);
+		Thread thread=new Thread((Workstation) s);
 		thread.setName("segment thread id: "+s.getId());
 		thread.start();
 		

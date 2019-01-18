@@ -61,35 +61,15 @@ public class Line extends Segment{
 		this.nextSegment2 = nextSegment2;
 	}
 
-	@Override
-	public void run() {
-		try {
-			waiting();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
-	
-	private void waiting() throws InterruptedException {
-		synchronized(this) {
-			this.wait();
-		}		
-		
-	}
-
 	/**
 	 * 
+	 * @throws InterruptedException 
 	 * @see mondragon.edu.clases.Segment#askForPriority()
 	 */
 	@Override
-	public boolean askForPriority() {
-		try {
-			priority.acquire();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public boolean askForPriority() throws InterruptedException {
+	
+		priority.acquire();
 	
 		return true;	
 	}

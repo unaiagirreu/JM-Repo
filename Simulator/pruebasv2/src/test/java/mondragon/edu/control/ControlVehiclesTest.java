@@ -39,7 +39,7 @@ public class ControlVehiclesTest{
 	AnnotationConfigApplicationContext context;
 	
 	@Before
-	public void init() {
+	public void init() throws InterruptedException {
 		context = 
 	            new AnnotationConfigApplicationContext(AppConfig.class);
 		controlVehicles=new ControlVehicles(context);
@@ -50,7 +50,7 @@ public class ControlVehiclesTest{
 		createMockSegment();
 	}
 	
-	private void createMockSegment() {//creacion de mock para el segmentService (conexion a la base de datos)
+	private void createMockSegment() throws InterruptedException {//creacion de mock para el segmentService (conexion a la base de datos)
 		expect(segmentService.findCorrespondentLine(1)).andReturn((Line) SegmentList.get(0));
 		expect(segmentService.findCorrespondentLine(2)).andReturn((Line) SegmentList.get(1));
 		expect(segmentService.findCorrespondentLine(3)).andReturn((Line) SegmentList.get(2));
@@ -151,7 +151,7 @@ public class ControlVehiclesTest{
 	}
 	
 	@Test
-	public void testRutaParking() {//esta funcion le asigna una ruta al vehiculo desde donde recoge el producto hasta el destino del producto. comparamos la ruta que se le asigna con la que deberia de ser
+	public void testRutaParking() throws InterruptedException {//esta funcion le asigna una ruta al vehiculo desde donde recoge el producto hasta el destino del producto. comparamos la ruta que se le asigna con la que deberia de ser
 		vehicle2=controlVehicles.getVehicle2();
 		vehicle2.setCurrentSegment(SegmentList.get(16));
 		vehicle2.setDestinationSegment(SegmentList.get(25));

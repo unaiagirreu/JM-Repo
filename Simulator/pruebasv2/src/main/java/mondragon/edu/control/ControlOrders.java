@@ -11,6 +11,7 @@ import mondragon.edu.clases.Workstation;
  * Class for controlling orders
  * 
  * @author unaiagirre
+ * @param segmentList
  *
  */
 public class ControlOrders {

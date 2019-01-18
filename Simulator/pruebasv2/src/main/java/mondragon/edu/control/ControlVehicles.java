@@ -22,7 +22,20 @@ import mondragon.edu.service.VehicleService;
  * Class for controlling vehicles and movements
  * 
  * @author unaiagirre
- *
+ * @param sem
+ * @param mutEx
+ * @param listVehicles
+ * @param listAvailableVehicles
+ * @param segmentList
+ * @param rutas
+ * @param context
+ * @param vehicle0
+ * @param vehicle1
+ * @param vehicle2
+ * @param vehicle3
+ * @param vehicle4
+ * @param segmentService
+ * @param vehicleService
  */
 public class ControlVehicles {
 
@@ -55,8 +68,9 @@ public class ControlVehicles {
 	 * This function sets the segment list, the current segment of each vehicle, and the status of the vehicles
 	 * 
 	 * @param SegmentList the segment list we want to set
+	 * @throws InterruptedException 
 	 */
-	public void setSegmentList(List<Segment> SegmentList) {
+	public void setSegmentList(List<Segment> SegmentList) throws InterruptedException {
 		segmentList=SegmentList;
 		vehicle0.setCurrentSegment(segmentList.get(22));
 		vehicleService.setCurrentSegment(vehicle0, segmentList.get(22));
@@ -196,13 +210,11 @@ public class ControlVehicles {
 	 * 
 	 * @param vehicle the vehicle going to the parking
 	 * @return return the parking available
+	 * @throws InterruptedException 
 	 */
-	public Parking definirRutaParking(Vehicle vehicle) {
-		try {
-			sem.acquire();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public Parking definirRutaParking(Vehicle vehicle) throws InterruptedException {
+		
+		sem.acquire();
 		Parking parking = searchAvailableParking();
 		Segment origin=vehicle.getCurrentSegment();
 		Segment desti= parking;
