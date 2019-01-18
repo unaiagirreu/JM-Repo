@@ -1,14 +1,26 @@
 package edu.mondragon.springmvc.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 
+
+/**
+ * @author Usuario
+ *
+ */
+/**
+ * @author Usuario
+ *
+ */
 @Entity
 @Table(name = "user")
 public class User {
@@ -37,6 +49,9 @@ public class User {
    
    @Column(name = "surname")
    private String surname;
+   
+   @Transient
+   List<Order> orders;
 
    public User() {}
    
@@ -115,6 +130,15 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	
 	
 	  
 }

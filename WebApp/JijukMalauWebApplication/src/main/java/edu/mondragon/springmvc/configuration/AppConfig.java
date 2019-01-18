@@ -16,9 +16,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import edu.mondragon.springmvc.entity.Catalog;
-import edu.mondragon.springmvc.entity.Item;
-import edu.mondragon.springmvc.entity.User;
+import edu.mondragon.springmvc.entity.*;
 
 
 @Configuration
@@ -54,7 +52,7 @@ public class AppConfig {
       props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 
       factoryBean.setHibernateProperties(props);
-      factoryBean.setAnnotatedClasses(User.class, Item.class, Catalog.class);
+      factoryBean.setAnnotatedClasses(User.class, Item.class, Catalog.class, Order.class, Product.class, Segment.class, Workstation.class,Parking.class,Line.class,Vehicle.class);
       return factoryBean;
    }
 

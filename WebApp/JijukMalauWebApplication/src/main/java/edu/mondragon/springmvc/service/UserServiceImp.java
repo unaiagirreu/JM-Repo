@@ -1,5 +1,7 @@
 package edu.mondragon.springmvc.service;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +39,20 @@ public class UserServiceImp implements UserService {
 	public User loadUser(String username, String password) {
 		return userDao.loadUser(username, password);
 	}
-   
+	
+	
+	 @Transactional
+		public List<BigInteger> getProductsQuantityPerOrder(){
+			return userDao.getProductsQuantityPerOrder();
+		}
+		@Transactional
+		public List<BigDecimal> getTotalPricePerUser() {
+			return userDao.getTotalPricePerUser();
+		}
+		@Transactional
+		public List<Integer> getUsersId() {
+			return userDao.getUsersId();
+		}
    
 
 }

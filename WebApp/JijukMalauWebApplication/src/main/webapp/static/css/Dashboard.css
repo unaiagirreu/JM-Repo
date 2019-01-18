@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    "graph1 graph2"
+    "table table";
+}
+
+#myDiv0{
+    grid-template-areas:graph1;
+}
+
+#myDiv1{
+    grid-template-areas:graph1;
+}
+
+#myDiv2{
+    grid-template-areas:table;
+}

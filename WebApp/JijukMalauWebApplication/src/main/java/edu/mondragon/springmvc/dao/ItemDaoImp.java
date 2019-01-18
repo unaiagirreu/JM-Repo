@@ -18,7 +18,7 @@ public class ItemDaoImp implements ItemDao{
 	@Override
 	public List<Item> getAllItems() {
 		@SuppressWarnings("unchecked")
-	    TypedQuery<Item> query=sessionFactory.getCurrentSession().createQuery("from item");
+	    TypedQuery<Item> query=sessionFactory.getCurrentSession().createQuery("from Item");
 	    return query.getResultList();
 	}
 

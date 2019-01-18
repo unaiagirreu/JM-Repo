@@ -16,20 +16,47 @@ public class AppController {
 
 	@RequestMapping(value = { "/"}, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
-		return "home";
+		model.addAttribute("login", new Login());
+		//model.addAttribute("user", userService.loadUser("kepau", "kepa"));
+		return "login";
 	}
 
 	@RequestMapping(value = { "/login"}, method = RequestMethod.GET)
-	public String productsPage(ModelMap model) {
+	public String loginPage(ModelMap model) {
 		model.addAttribute("login", new Login());
 		return "login";
 	}
 
 	@RequestMapping(value = { "/register"}, method = RequestMethod.GET)
-	public String contactUsPage(ModelMap model) {
+	public String registerPage(ModelMap model) {
 		model.addAttribute("message", "");
 		model.addAttribute("register", new Register());
 		return "register";
+	}
+	
+	@RequestMapping(value = { "/profile"}, method = RequestMethod.GET)
+	public String profilePage(ModelMap model) {
+		return "profile";
+	}
+	
+	@RequestMapping(value = { "/confirmOrder"}, method = RequestMethod.GET)
+	public String confirmOrderPage(ModelMap model) {
+		return "confirmOrder";
+	}
+	
+	@RequestMapping(value = { "/pendingOrders"}, method = RequestMethod.GET)
+	public String pendingOrdersPage(ModelMap model) {
+		return "pendingOrders";
+	}
+	
+	@RequestMapping(value = { "/contact"}, method = RequestMethod.GET)
+	public String contactPage(ModelMap model) {
+		return "contact";
+	}
+	
+	@RequestMapping(value = { "/warehouse"}, method = RequestMethod.GET)
+	public String cwarehousePage(ModelMap model) {
+		return "warehouse";
 	}
 	
 }
