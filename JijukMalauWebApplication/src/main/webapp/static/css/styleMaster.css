@@ -1,0 +1,223 @@
+*{
+  box-sizing:border-box;
+  padding:0;
+  margin:0;
+}
+body{
+  margin:0px;
+  background-image:none;
+  margin-left:0;
+  margin-right:0;
+}
+.jumbotron{
+  background-color: white;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  vertical-align: baseline;
+}
+.figure-img{
+	visibility: hidden;
+}
+#jm_logo {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:135px;
+  height:131px;
+}
+#logo{
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:135px;
+  height:131px;
+}
+#title1_text {
+  border-width:0px;
+  font-family:'Freestyle Script Bold', 'Freestyle Script Normal', 'Freestyle Script';
+  font-weight:700;
+  font-style:normal;
+  font-size:48px;
+  text-align: center;
+}
+#title2_text {
+  border-width:0px;
+  position:relative;
+  font-family: 'Monoton', cursive;  
+  font-weight:300;
+  font-style:normal;
+  color:#358E9E;
+  font-size:32px;
+}
+.mb-5, .my-5 {
+  background-color:#e9ecef;
+  margin-bottom: 1.5rem!important;
+}
+.navbar{
+  padding:0;
+}
+.form-group {
+    margin-bottom: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color:#358E9E;
+  padding:0;  
+}
+a{
+  border-width:0px;
+  font-family:'Freestyle Script Bold', 'Freestyle Script Normal', 'Freestyle Script';
+  font-weight:700;
+  font-style:normal;
+  font-size:34px;
+  text-align: center;
+  color:#358E9E;
+}
+.breadcrumb{
+  margin-bottom:0;  
+}
+.price{
+  display:flex;  
+}
+#min{
+  font-size: 20px;
+}
+#max{
+  font-size: 20px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;   
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%; 
+  background: #358E9E;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+.rangeValue{
+  font-size: 25px;
+}
+.card{
+  padding:0;
+  background-color: rgba(0,0,0,.075);
+}
+.card-header{
+  padding:0;
+
+}   
+.card-body{
+  padding-right: .5rem;
+  padding-left: .5rem;
+  padding-top: .5rem;
+  padding-bottom: 1rem;
+}
+.row{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.btn-primary{
+  font-size: 28px;
+}
+.btn-secondary{
+  background-color:#358E9E;
+}
+figure{
+  text-align: center;
+  margin: 20px;
+}
+#u36_img {
+  border-width:0px;
+  left:0px;
+  top:0px;
+  width:46px;
+  height:42px;
+}
+
+#u37_img {
+  border-width:0px;
+  left:0px;
+  top:15px;
+  width:33px;
+  height:21px;
+}
+.numberOfProdutcs{
+  position: relative;
+}
+
+label{
+  margin-bottom: 15px;
+}
+
+.bg-overlay{
+  background:url("/Spring4MVCApacheTiles3Example/static/img/warehouse2.jpg");
+  background-repeat: no-repeat;
+	background-size: 520px 370px;
+  background-position: center center;
+}
+card.col-2-row.align-items-start{
+    padding-right:10px;
+    
+}
+.bg-no-overlay {
+    background:url("/Spring4MVCApacheTiles3Example/static/img/warehouse2.jpg");
+    background-repeat: no-repeat;
+	background-size: 520px 370px;
+    background-position: center center;
+}
+#warehouseContainer{
+  margin:1rem;
+  size:658px 274px;
+}
+
+.card.col-2{
+  background-color: rgba(0,0,0,0);
+  border:0;
+  padding:0;
+  width: 104.67px;
+  heigth:54.98px;
+  padding-left:30px;
+  
+}
+.container{
+  padding:0;
+}
+
+footer{
+	margin: 50px 0px 0px 0px;
+}
+.Empty{
+	visibility:hidden;
+}
+.copyleft {
+  display:inline-block;
+  transform: rotate(180deg);
+}
+
+
+
+
+}

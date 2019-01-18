@@ -1,1 +1,0 @@
-<div>Copy left by Jijuk Malau Robotics</div>
