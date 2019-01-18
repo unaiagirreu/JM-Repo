@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>  
+	<!-- Base Definition -->
+	<definition name="base-definition" 
+       template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">  
+       <put-attribute name="title" value=""/>  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp"/>  
+       <put-attribute name="menu" value=""/>  
+       <put-attribute name="body" value=""/>  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp"/>  
+	</definition>    
+
+	<!-- Login -->
+	<definition name="login" extends="base-definition">  
+       <put-attribute name="title" value="Login" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  
+	</definition>  
+    
+	<!-- Customer -->
+	<!-- Home Page -->
+	<definition name="home" extends="base-definition">  
+       <put-attribute name="title" value="Welcome"/>
+       <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuCustomer.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/customer/home.jsp" />  
+	</definition>
+	<!-- Confirm order -->
+	<definition name="confirmOrder" extends="base-definition">  
+       <put-attribute name="title" value="Confirm Order" />
+	   <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuCustomer.jsp" />	   
+       <put-attribute name="body" value="/WEB-INF/views/pages/customer/confirmOrder.jsp" />  
+	</definition>	
+	<!-- Profile -->
+	<definition name="profile" extends="base-definition">  
+       <put-attribute name="title" value="Profile" />
+       <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuCustomer.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/customer/profile.jsp" />  
+	</definition> 
+	<!-- Contact us -->
+	<definition name="contact" extends="base-definition">  
+       <put-attribute name="title" value="Contact us" />
+       <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuCustomer.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/customer/contact.jsp" />  
+	</definition>
+   
+	<!-- Manager -->
+	<!-- Register -->
+	<definition name="register" extends="base-definition">  
+       <put-attribute name="title" value="Register" />
+       <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuManager.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/manager/finalRegister.jsp" />  
+	</definition>   
+	<!-- Dashboard -->
+	<definition name="dashboard" extends="base-definition">  
+       <put-attribute name="title" value="Dashboard" />
+       <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuManager.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/manager/dashboard.jsp" />  
+	</definition> 
+		<!-- Profile operator-->
+	<definition name="mangeProfile" extends="base-definition">  
+       <put-attribute name="title" value="Confirm Order" />
+	   <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuManager.jsp" />	   
+       <put-attribute name="body" value="/WEB-INF/views/pages/manager/managerProfile.jsp" />  
+	</definition>
+  
+	<!-- Operator -->
+	<!-- Warehouse -->
+	<definition name="warehouse" extends="base-definition">  
+       <put-attribute name="title" value="Warehouse" />
+       <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuOperator.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/operator/warehouse.jsp" />  
+	</definition>
+    <!-- Pending order -->
+	<definition name="pendingOrders" extends="base-definition">  
+       <put-attribute name="title" value="Confirm Order" />
+	   <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuOperator.jsp" />	   
+       <put-attribute name="body" value="/WEB-INF/views/pages/operator/pendingOrders.jsp" />  
+	</definition>
+	<!-- Profile operator-->
+	<definition name="operatorProfile" extends="base-definition">  
+       <put-attribute name="title" value="Confirm Order" />
+	   <put-attribute name="menu" value="/WEB-INF/views/pages/menus/menuOperator.jsp" />	   
+       <put-attribute name="body" value="/WEB-INF/views/pages/operator/operatorProfile.jsp" />  
+	</definition>
+</tiles-definitions>

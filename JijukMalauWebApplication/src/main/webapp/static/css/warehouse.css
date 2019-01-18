@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+@media (min-width: 992px){
+  .container {
+      max-width:720px;
+  }
+}
+@media (min-width: 576px){
+  .container {
+        max-width:720px;
+  }
+}
+@media (min-width: 1200px){
+  .container {
+        max-width:720px;
+
+  } 
+}
+@media (min-width: 0px){
+  .container {
+        max-width:720px;
+  } 
